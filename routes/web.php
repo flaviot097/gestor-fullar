@@ -6,9 +6,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/panel', function () {
-    return view('panel-principal');
-});
+//Route::resource('user', UserController::class);
+
+Route::get("/caja", function () {
+    return view("caja");
+})->name('caja-registradora');
+//Route::view('/caja', 'caja')->name('caja-registradora');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
