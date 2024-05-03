@@ -10,8 +10,13 @@ Route::get('/', function () {
 
 Route::get("/caja", function () {
     return view("caja");
-})->name('caja-registradora');
+})->middleware(['auth', 'verified'])->name('caja-registradora');
 //Route::view('/caja', 'caja')->name('caja-registradora');
+
+//ruta deposito
+Route::get("/deposito", function () {
+    return view("deposito");
+})->middleware(['auth', 'verified'])->name('deposito');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
