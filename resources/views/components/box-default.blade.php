@@ -44,8 +44,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg flex flex-1" id="panel-header" style="justify-content:space-between;min-height: 200px; align-items: center;" >
                 <div>
-                    <button >gfdgdf</button>
-                    @livewire('AppLayout')
+
+                    <button >@livewire('home-component')</button>
                 </div>
                 @if (url()->current()== "http://gestor-app.test/deposito")
                     <form action="" method="" class="form-container">

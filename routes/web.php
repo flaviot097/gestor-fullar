@@ -2,6 +2,16 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
+use App\Observers\UserObserver;
+
+/**rutas eventos y listener */
+
+//Route::get("/orden", [OrderController::class, "Create"])->name("CreateOrder");
+
+/** rutas obserbadores */
+
+Route::get("/orden", [UserObserver::class, "created"])->middleware(['auth', 'verified'])->name("ObserverUser");
 
 Route::get('/', function () {
     return view('welcome');
