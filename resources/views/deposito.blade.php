@@ -16,3 +16,10 @@
     </div>
 
 </x-app-layout>
+
+<script>
+    const btnCreate=document.querySelector(".btn.crear")
+    console.log(btnCreate);
+    btnCreate.addEventListener("click",()=>{console.log("se apreto")})
+</script>
+

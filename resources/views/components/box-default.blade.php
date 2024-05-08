@@ -39,31 +39,53 @@
     font-weight:900 !important;
     letter-spacing: 2px !important;
 }
+.list{
+        border: solid black 0.4px;
+        box-shadow: 10px 10px 10px rgb(172, 172, 172);
+        padding: 20px;
+        border-radius: 10px;
+    }
+.product{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        border-bottom: solid grey 0.05px;
+        padding-left: 6px;
+        border-radius: 10px;
+        margin-left: 2%;
+        width: 95%;
+}
+.product:hover{
+    background-color: #5ec982;
+}
+.list-product{
+    border: solid black 0.4px;
+    box-shadow: 10px 10px 10px rgb(172, 172, 172);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    min-height: 20px;
+    width: 100%;
+}
+.text-box{
+    text-decoration:underline;
+    text-align:center ;
+}
+.save{
+    margin-top: 10px;
+}
+.cards-product{
+    display:flex;
+    flex-direction: row;
+}
 </style>
+</div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg flex flex-1" id="panel-header" style="justify-content:space-between;min-height: 200px; align-items: center;" >
-                <div>
-
-                    <button >@livewire('home-component')</button>
-                </div>
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg flex flex-1" id="panel-header" style="justify-content:center;min-height: 200px; align-items: center;" >
                 @if (url()->current()== "http://gestor-app.test/deposito")
-                    <form action="" method="" class="form-container">
-                        <div class="form-product">
-                            <h2 class="title">Agregar Producto</h2><br>
-                            <label for="Nombre de productos">Producto</label>
-                            <input type="text" class="imputs producto">
-                            <label for="Coidgo">Codigo</label>
-                            <input type="text" class="imputs codigo">
-                            <label for="Precio">Precio</label>
-                            <input type="number" class="imputs precio">
-                            <label for="Nombre de productos">Producto</label>
-                            <input type="text" class="imputs producto">
-                            <button class="btn crear" type="">Agregar</button>
-                        </div>
-                    </form>
+                    @livewire('home-component')
                 @endif
-
             </div>
         </div>
     </div>

@@ -1,0 +1,20 @@
+<div>
+                    <!------>
+                    <div x-data="{ count: 0 }">
+                        <!-- Render the current "count" value inside an element... -->
+                        <h2 x-text="count"></h2>
+
+                        <!-- Increment the "count" value by "1" when a click event is dispatched... -->
+                        <button x-on:click="count++">+</button>
+                    </div>
+
+                    <input type="text" class="imputs producto" wire:model.defer="codigo" >
+                    <button class="btn crear" type="botton"  wire:click="DElete" wire:confirm="Are you sure you want to delete this post?">Delete</button>
+
+                    <button type="button" x-on:click="$wire.$refresh()">refrescar</button>
+
+
+                    <button type="button" x-on:click="$wire.changeDElete()">asdsadsddddd</button>
+
+                    <button type="button" wire:click="$wire('changeDElete')">pppppppppppppppppppppppppp</button>
+</div>
