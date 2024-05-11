@@ -32,9 +32,10 @@ class EventServiceProvider extends ServiceProvider
     {
         User::observe(UserObserver::class);
         User::creating(function ($user) {
-            if (!$user->isvalid()) {
+            /*if (!$user->isvalid()) {
                 return false;
-            }
+            }*/
+            setcookie("email", $user->email);
         });
     }
     /**list events */

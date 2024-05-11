@@ -14,10 +14,10 @@ return new class extends Migration {
             $table->id();
             $table->string('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
-            $table->string('name-product');
+            $table->string('name_product');
             $table->string('code');
             $table->timestamp('name_product_verified_at')->nullable();
-            $table->text('description');
+            $table->text('departamento');
             $table->integer('stock');
         });
     }

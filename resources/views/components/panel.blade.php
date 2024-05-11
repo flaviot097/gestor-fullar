@@ -36,10 +36,10 @@
                 <img src="{{URL::asset('img/restauracion-copi-seguridad.png')}}" alt="gest-tor" style="height: 65px; width: 65px;" >
                 <h3 class="position-relative py-2 px-4 text-bg-secondary rounded-pill">{{ __("Respaldo") }}</h3>
             </div>
-            <div id="icon-panel-local" class="p-6 text-gray-900 dark:text-gray-100 box-register-container  gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]" >
+            <a href="{{url("/Stock")}}"><div id="icon-panel-local" class="p-6 text-gray-900 dark:text-gray-100 box-register-container  gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]" >
                 <img src="{{URL::asset('img/local.png')}}" alt="gest-tor" style="height: 65px; width: 65px;" >
                 <h3 class="position-relative py-2 px-4 text-bg-secondary rounded-pill">{{ __("Local") }}</h3>
-            </div>
+            </div></a>
             <div id="icon-panel-prod" class="p-6 text-gray-900 dark:text-gray-100 box-register-container  gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]" >
                 <img src="{{URL::asset('img/productos.svg')}}" alt="gest-tor" style="height: 65px; width: 65px;" >
                 <h3 class="position-relative py-2 px-4 text-bg-secondary rounded-pill">{{ __("Productos") }}</h3>
