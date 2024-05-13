@@ -6,6 +6,7 @@ use App\Exceptions\ProductErrorExceptions;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -14,26 +15,40 @@ class ProductController extends Controller
      *
      * @var array<int, string>
      */
-    public $message = "Error al crear Producto";
+
     public function crear(Request $request)
     {
+        //validamos los campos que nos lleg
+        $request->validate([
+            "product" => "required",
+            "price" => "required",
+            "stock" => "required",
+            "code" => "unique:products|required",
+            "departamento" => "required"
+
+        ]);
+
         $product_create = new Product;
-        $product_create->user_id = Auth::user()->email;
+        $product_create->user_id = "flaviotrocello097@gmail.com";
         $product_create->name_product = $request->input("product");
         $product_create->code = $request->input("code");
+        $product_create->code = $request->input("price");
         $product_create->departamento = $request->input("departamento");
         $product_create->stock = $request->input("stock");
-        if ($product_create !== "" || $product_create !== []) {
+        $product_create->save();
+
+
+        //validacion de errores (si $product_create no responde)//////////////////////////////////////////---------------------------------------------------------------------
+        if ($product_create->error) {
+            throw new ProductErrorExceptions($product_create->error->message, $product_create->error->staus);
+        }
+        if ($product_create !== [] || $product_create !== "") {
             try {
-                $product_create->save();
+
                 return redirect()->route("deposito");
             } catch (\Exception $e) {
-                if ($product_create->error) {
-                    throw new ProductErrorExceptions($product_create->error->message, $product_create->error->staus);
-                } else {
-                    throw new ProductErrorExceptions();
-                }
-
+                /////////////////////////////////si la db no funciona///////////////////////////////////////////-------------------------------------------------------------------
+                throw new ProductErrorExceptions();
             }
         }
 

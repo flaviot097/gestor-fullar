@@ -2,11 +2,9 @@
 
 namespace App\Livewire;
 
-use App\Models\Product;
-use GuzzleHttp\Promise\Create;
-use Illuminate\Http\Request;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use App\Exceptions\ProductErrorExceptions;
 
 class SearchForm extends Component
 {
@@ -15,19 +13,25 @@ class SearchForm extends Component
         return view('livewire.search-form');
     }
     //buscar usuarios
-    public $codigoForm = "";
-    public $productsForm = "";
+    public $codigo = "";
+    public $products = "";
     public $arrayProduct = [];
     public function search()
     {
         //$this->emit("productSearched", $this->codigoForm);
         //$ProductsAll = DB::table('users')->get();
-        $productsForm = $this->productsForm;
-        $codigoForm = $this->codigoForm;
+
+        $productsForm = $this->products;
+        $codigoForm = $this->codigo;
 
         if ($productsForm !== "") {
-            $loks = DB::select("select * from users where name=?", [$productsForm]);
-            $this->arrayProduct = $loks;
+            $loks = DB::select("select * from products where name_product=?", [$productsForm]);
+            try {
+                $this->arrayProduct = $loks;
+            } catch (\Exception $e) {
+                throw new ProductErrorExceptions();
+            }
+
         } else if ($codigoForm !== "") {
             $loks = DB::select("select * from users where code=?", [$codigoForm]);
         } else {

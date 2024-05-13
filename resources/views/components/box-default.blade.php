@@ -78,6 +78,10 @@
     display:flex;
     flex-direction: row;
 }
+.alert-danger{
+    color: red;
+    font-size: 13px;
+}
 </style>
 </div>
     <div class="py-12">

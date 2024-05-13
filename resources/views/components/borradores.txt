@@ -18,3 +18,17 @@
 
                     <button type="button" wire:click="$wire('changeDElete')">pppppppppppppppppppppppppp</button>
 </div>
+
+
+-----------------------------------------------------crear divs dinamicos con livewirw-----------------------------------------
+ @if ($state1 == true)
+        <div class="list-product">
+            <h2 class="text-box">Productos</h2>
+            @foreach ($nameProducts as $product)
+                <div class="cards-product">
+                    <span class="spam-numer" wire:model="in">{{$in++}}</span><div class="product">{{$product}}</div>
+                </div>
+            @endforeach
+            <button class="btn save" wire:click="save">Agregar a stock</button>
+        </div>
+@endif

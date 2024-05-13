@@ -10,7 +10,8 @@
     <div>
         <!-- componente deposito -->
         @if (url()->current() == "http://gestor-app.test/deposito")
-        <x-box-default></x-box-default>
+        <x-box-default>
+        </x-box-default>
         @endif
     </div>
 

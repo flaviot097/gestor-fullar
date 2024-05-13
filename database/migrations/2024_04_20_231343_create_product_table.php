@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
             $table->string('name_product');
+            $table->float('price');
             $table->string('code');
             $table->timestamp('name_product_verified_at')->nullable();
             $table->text('departamento');
