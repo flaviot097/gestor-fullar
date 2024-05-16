@@ -123,22 +123,18 @@ tr:hover{background-color: #5ec982;}
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="text-center stock-fuel">1</td>
-                    <td class="code">dfr-326373</td>
-                    <td class="text-center">lavandina x2 Litros</td>
-                    <td class="text-center">$4500.00</td>
-                    <td class="delete-product"><a href="" class="delete-product" ><img class="img-delete" src="{{URL::asset("img/eliminar.png")}}" alt="Eliminar"></a></td>
-                  </tr>
-                  <tr >
-                    <td class="text-center stock-whating">5</td>
-                    <td class="code">jdo-467657</td>
-                    <td class="text-center">alfajor fantoche 35g</td>
-                    <td class="text-center">$5000.00</td>
-                    <td class="delete-product"><a href="" class="delete-product"><img class="img-delete" src="{{URL::asset("img/eliminar.png")}}" alt="Eliminar"></a></td>
-                  </tr>
+                    @foreach (Illuminate\Support\Facades\DB::select("select * from products") as $item)
+                    <tr>
+                      <td class="text-center code">{{$item->code}}</td>
+                      <td class="text-center">{{$item->name_product}}</td>
+                      <td class="text-center stock">{{$item->stock}}</td>
+                      <td class="text-center">${{$item->price}}</td>
+                      <td class="delete-product"><a href="" id="{{$item->code}}" class="delete-product" wire:click="delete({{ $item->id }})" ><img class="img-delete" src="{{URL::asset("img/eliminar.png")}}" alt="Eliminar"></a></td>
+                    </tr>
+                    @endforeach
                 </tbody>
               </table>
     </div>
+
     </div>
 

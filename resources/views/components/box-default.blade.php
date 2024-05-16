@@ -78,9 +78,14 @@
     display:flex;
     flex-direction: row;
 }
-.alert-danger{
-    color: red;
-    font-size: 13px;
+.stock-full{
+    background-color: #007928;
+}
+.stock-fuel{
+    background-color:#ff631a;
+}
+.stock-whating{
+    background-color: rgb(179, 179, 80);
 }
 </style>
 </div>

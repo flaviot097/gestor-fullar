@@ -5,6 +5,8 @@ namespace App\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\ProductErrorExceptions;
+use Dotenv\Parser\Value;
+use GuzzleHttp\Psr7\Request;
 
 class SearchForm extends Component
 {
@@ -16,6 +18,8 @@ class SearchForm extends Component
     public $codigo = "";
     public $products = "";
     public $arrayProduct = [];
+    public $clase = "";
+
     public function search()
     {
         //$this->emit("productSearched", $this->codigoForm);
@@ -28,12 +32,25 @@ class SearchForm extends Component
             $loks = DB::select("select * from products where name_product=?", [$productsForm]);
             try {
                 $this->arrayProduct = $loks;
+                foreach ($loks as $value) {
+                    if ($value->stock > 10) {
+                        $this->clase = "stock-full";
+                    }
+                    if ($value->stock < 10 && $value->stock >= 2) {
+                        $this->clase = "stock-whating";
+                    }
+                    if ($value->stock == 0 || $value->stock < 2) {
+                        $this->clase = "stock-fuel";
+                    }
+                }
+                ;
             } catch (\Exception $e) {
                 throw new ProductErrorExceptions();
             }
 
         } else if ($codigoForm !== "") {
             $loks = DB::select("select * from users where code=?", [$codigoForm]);
+
         } else {
             return "los Campos estan vacios";
         }
@@ -41,6 +58,7 @@ class SearchForm extends Component
 
         //return dd($loks[0]);
     }
+
 }
 /**use Illuminate\Http\RedirectResponse;
     public function store(Request $request): RedirectResponse

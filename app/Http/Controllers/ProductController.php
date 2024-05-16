@@ -29,13 +29,12 @@ class ProductController extends Controller
         ]);
 
         $product_create = new Product;
-        $product_create->user_id = "flaviotrocello097@gmail.com";
+        $product_create->user_id = Auth::user()->email;
         $product_create->name_product = $request->input("product");
         $product_create->code = $request->input("code");
-        $product_create->code = $request->input("price");
+        $product_create->price = $request->input("price");
         $product_create->departamento = $request->input("departamento");
         $product_create->stock = $request->input("stock");
-        $product_create->save();
 
 
         //validacion de errores (si $product_create no responde)//////////////////////////////////////////---------------------------------------------------------------------
@@ -44,7 +43,7 @@ class ProductController extends Controller
         }
         if ($product_create !== [] || $product_create !== "") {
             try {
-
+                $product_create->save();
                 return redirect()->route("deposito");
             } catch (\Exception $e) {
                 /////////////////////////////////si la db no funciona///////////////////////////////////////////-------------------------------------------------------------------

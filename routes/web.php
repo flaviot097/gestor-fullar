@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
 use App\Observers\UserObserver;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CajaController;
 
 /**rutas eventos y listener */
 
@@ -19,10 +20,16 @@ Route::get('/', function () {
 });
 //Route::resource('user', UserController::class);
 
-Route::get("/caja", function () {
+/*Route::get("/caja", function () {
     return view("caja");
 })->middleware(['auth', 'verified'])->name('caja-registradora');
-//Route::view('/caja', 'caja')->name('caja-registradora');
+
+#####rutas de caja#################
+
+Route::controller(CajaController::class)->group(function () {
+    Route::get("/caja", "saveCo");
+});*/
+Route::view('/caja', 'caja')->middleware(['auth', 'verified'])->name('caja-registradora');
 
 //ruta deposito
 Route::get("/deposito", function () {
