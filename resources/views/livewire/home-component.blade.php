@@ -14,12 +14,12 @@
             @error('stock')
                 <div class="alert alert-danger">*{{$message}}</div>
             @enderror
-            <input name="stock" type="text" class="imputs producto" wire:model.live="stock" >
+            <input name="stock" type="number" class="imputs producto" wire:model.live="stock" >
             <label for="Precio">Precio</label>
             @error('price')
                 <div class="alert alert-danger">*{{$message}}</div>
             @enderror
-            <input name="price" type="text" class="imputs producto" wire:model.live="price" >
+            <input name="price" type="number" class="imputs producto" wire:model.live="price" >
             <label for="Departamento">Departamento</label>
             @error('departamento')
                 <div class="alert alert-danger">*{{$message}}</div>

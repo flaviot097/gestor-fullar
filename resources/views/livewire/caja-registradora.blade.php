@@ -1,5 +1,3 @@
-
-
 <div class="container-componente" >
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg flex flex-1 div-contenedor-caja" >
             <div class="aling-content" >
@@ -31,7 +29,7 @@
                     @if ($loks)
 
                     @foreach ($arrayAcu as $lo)
-                      <tr>
+                      <tr class="cards-prod" >
                         <td>{{$lo[2]}}</td>
                         <td class="text-center">{{$lo[1]}}</td>
                         <td class="text-center">{{$lo[3]}}</td>
@@ -48,15 +46,20 @@
                 <button class="btn-function add-product" wire:click="carge" >Agregar Producto</button>
                 <button class="btn-function money" ><img src="{{URL::asset("img/dinero-efectivo.png")}}" alt="Pagar en efectivo" class="efectivo" ></button>
                 <button class="btn-function target" ><img src="{{URL::asset("img/tarjetas.png")}}" alt="pagar con tarjeta" class="tarjetas" ></button>
-                <form action="btn-function close-sale" ><button wire:click="colseSale" class="btn-function close-sale" style="height: 122%" >Cerrar venta</button></form>
+                <form method="POST" action="{{route("stad.create")}}" class="form-sales"> @csrf<button wire:click="colseSale" class="btn-function close-sale" style="height: 122%" type="submit" >Cerrar venta</button></form>
                 <div class="container total">${{$total}}</div>
             </div>
         </div>
 
 </div>
+
 <script>
-  function tecla(){
-    var tecla = event.code;
-    console.log(tecla);
-  }
+    const formSale = document.querySelector("form.form-sales");
+    const divCard = document.getElementsByClassName("cards-prod");
+    formSale.addEventListener("submit", (e) => {
+        if(divCard.length == 0){
+        e.preventDefault();
+        window.location.href = "http://gestor-app.test/caja";
+    }
+    });
 </script>

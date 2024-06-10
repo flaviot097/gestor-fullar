@@ -6,6 +6,8 @@ use App\Http\Controllers\OrderController;
 use App\Observers\UserObserver;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CajaController;
+use App\Http\Controllers\DbStadsRestController;
+use App\Livewire\CajaRegistradora;
 
 /**rutas eventos y listener */
 
@@ -18,6 +20,13 @@ Route::get("/orden", [UserObserver::class, "created"])->middleware(['auth', 'ver
 Route::get('/', function () {
     return view('welcome');
 });
+
+/**ruta de api rest */
+
+Route::resource("/StasdsRest", DbStadsRestController::class);
+
+/** */
+Route::view('/estadisticas', "stads")->middleware(['auth', 'verified'])->name('estadisticas');
 //Route::resource('user', UserController::class);
 
 /*Route::get("/caja", function () {
@@ -30,6 +39,8 @@ Route::controller(CajaController::class)->group(function () {
     Route::get("/caja", "saveCo");
 });*/
 Route::view('/caja', 'caja')->middleware(['auth', 'verified'])->name('caja-registradora');
+Route::post("/caja", [CajaRegistradora::class, "closeSale"])->middleware(['auth', 'verified'])->name('stad.create');
+
 
 //ruta deposito
 Route::get("/deposito", function () {
